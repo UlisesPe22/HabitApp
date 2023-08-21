@@ -1,0 +1,66 @@
+
+body, h1, h2, h3, p, ul, ol {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark grey text color */
+}
+
+.container {
+    max-width: 1200px; /* Set maximum width for content */
+    margin: 0 auto; /* Center content horizontally */
+    padding: 20px; /* Add space around content */
+}
+
+/* Header styles */
+header {
+    background-color: #000; /* Black header background */
+    color: #fff; /* White text color */
+    padding: 10px 0;
+}
+
+/* Navigation styles */
+nav {
+    background-color: #333; /* Dark grey navigation background */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+/* Button styles */
+button, input[type="submit"] {
+    background-color: #0b491b; /* Dark green button background */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Form input styles */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 5px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333; /* Dark grey footer background */
+    color: #fff; /* White text color */
+    text-align: center;
+    padding: 10px 0;
+}
