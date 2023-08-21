@@ -4,19 +4,16 @@ from flask_login import LoginManager, UserMixin, current_user, login_user
 from flask import current_app
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import InputRequired, Length, ValidationError, Email 
-from flask_bcrypt import Bcrypt 
-from flask_bcrypt import check_password_hash
-from flask_migrate import Migrate 
+from wtforms.validators import InputRequired, Length, Email 
+from flask_bcrypt import Bcrypt  
 from wtforms import SelectField
 from apscheduler.schedulers.background import BackgroundScheduler
 from datetime import datetime, timedelta, date 
 from operator import or_
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret22'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://Ulises:HabitTracker@localhost/habit_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 app.app_context().push()
