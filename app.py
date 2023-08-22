@@ -147,7 +147,7 @@ def update_habit_statuses():
             if (now - last_completed_datetime) >= interval:
                 if habit.status == "checked":
                     habit.status = "pending"
-                    habit.current_streak += 1 - 1
+                    habit.current_streak += 0
                 else:
                     habit.current_streak = 0 
                 habit.last_scheduled_check = now
