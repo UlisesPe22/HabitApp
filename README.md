@@ -24,9 +24,9 @@ Go to python website (https://www.python.org/downloads/) and pip will be include
 - "from app import db"
 - "db.create_all()"
 - "exit()"
-6. Open a new terminal and type "flask run". Click on the link ( it should look like this http://127.0.0.1:5000) and try the app.
+6. Open a new terminal and type "python app.py". Click on the link ( it should look like this http://127.0.0.1:5000) and try the app.
 
-  pip install Flask Flask-SQLAlchemy Flask-Login Flask-WTF Flask-Bcrypt APScheduler
+  **Note: if you have issues with the requierments.txt file, you can alternativly use this command**"pip install Flask Flask-SQLAlchemy Flask-Login Flask-WTF Flask-Bcrypt APScheduler email_validator"
 
 
   
