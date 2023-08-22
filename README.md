@@ -19,7 +19,7 @@ Go to python website (https://www.python.org/downloads/) and pip will be include
 2. Go to downloads and extract all from the zip file "HabitApp-main.zip".
 3. Open the "HabitApp-main" on Visual Studio.
 4. Open a new terminal on Visual Studio and write "pip install -r requirements.txt" then press enter. If there is an error with some dependencies, do not worry. It shouldn't be a problem.
-5. Finally start the database. open a new terminal and type "python". Once you are in the python interpreter, type
+5. Finally start the database. open a new terminal and type "python". Once you are in the python interpreter type and press enter after each command.
 - "from app import app"
 - "from app import db"
 - "db.create_all()"
