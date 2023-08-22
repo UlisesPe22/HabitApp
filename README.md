@@ -20,9 +20,9 @@ Go to python website (https://www.python.org/downloads/) and pip will be include
 3. Open the "HabitApp-main" on Visual Studio.
 4. Open a new terminal on Visual Studio and write "pip install -r requirements.txt" then press enter. If there is an error with some dependencies, do not worry. It shouldn't be a problem.
 5. Finally start the database. open a new terminal and type "python". Once you are in the python interpreter, type
-            - "from app import app"
-            - "from app import db"
-            - "db.create_all()"
-            - "exit()"
+- "from app import app"
+- "from app import db"
+- "db.create_all()"
+- "exit()"
 6. Open a new terminal and type "flask run". Click on the link ( it should look like this http://127.0.0.1:5000) and try the app. 
 
