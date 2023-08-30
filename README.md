@@ -14,7 +14,7 @@ Go to python website (https://www.python.org/downloads/) and pip will be include
 
 ### Installation
 
-1. Download the main folder by clicking on "code" button form https://github.com/UlisesPe22/HabitApp.
+1. Download the main folder by clicking on "code" button.
 2. Go to downloads and extract all from the zip file "HabitApp-main.zip".
 3. Open the "HabitApp-main" on Visual Studio. **Note: make sure to be in the correct folder. If you are not in the correct folder, the next step is not going to work**
 5. Open a new terminal on Visual Studio and write "pip install -r requirements.txt" then press enter. 
@@ -23,7 +23,7 @@ Go to python website (https://www.python.org/downloads/) and pip will be include
 - "from app import db"
 - "db.create_all()"
 - "exit()"
-6. Open a new terminal and type "python -m flask run". Click on the link ( it should look like this http://127.0.0.1:5000) and try the app.
+6. Open a new terminal and type "python -m flask run". Click on the link (it should look like this http://127.0.0.1:5000) and try the app.
 
   **Note: if you have issues with the requierments.txt file, you can alternativly use this command:**"pip install Flask Flask-SQLAlchemy Flask-Login Flask-WTF Flask-Bcrypt APScheduler email_validator"
 
