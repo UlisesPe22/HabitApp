@@ -19,6 +19,7 @@ app.app_context().push()
 bcrypt = Bcrypt(app)
 scheduler = BackgroundScheduler(daemon=True)
 scheduler.start()
+current_timestamp = datetime.utcnow()
 predefined_habits_data = [
     {
         'task': 'Drink a glass of water',
@@ -163,15 +164,15 @@ class Habit(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     task = db.Column(db.String(255), nullable=False)
     periodicity = db.Column(db.String(50), nullable=False)
-    last_completed = db.Column(db.Date)
+    last_completed = db.Column(db.Date, default=datetime.utcnow)
     current_streak = db.Column(db.Integer, default=0) 
     status = db.Column(db.String(20), default="pending")
     user = db.relationship('User', backref='habits')
-    last_scheduled_check = db.Column(db.DateTime)
+    last_scheduled_check = db.Column(db.DateTime, default=datetime.utcnow)
     highest_streak = db.Column(db.Integer, default=1)
     struggle_score = db.Column(db.Integer, default=1)
     added_date = db.Column(db.DateTime, default=datetime.utcnow)
-    next_pending_date = db.Column(db.DateTime)
+    next_pending_date = db.Column(db.DateTime, default=datetime.utcnow)
     deadline_hour = db.Column(db.Integer, nullable=False)
 
 def get_next_pending_date(periodicity, current_time, deadline_hour): 
