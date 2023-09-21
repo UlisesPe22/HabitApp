@@ -19,6 +19,63 @@ app.app_context().push()
 bcrypt = Bcrypt(app)
 scheduler = BackgroundScheduler(daemon=True)
 scheduler.start()
+predefined_habits_data = [
+    {
+        'task': 'Drink a glass of water',
+        'periodicity': 'daily',
+        'deadline_hour': 8,
+        'current_streak': 0,
+        'status': 'pending',
+        'highest_streak': 1,
+        'struggle_score': 1,
+        'added_date': current_timestamp,
+        'next_pending_date': None,
+    },
+    {
+        'task': 'Read for 30 minutes',
+        'periodicity': 'daily',
+        'deadline_hour': 18,
+        'current_streak': 0,
+        'status': 'pending',
+        'highest_streak': 1,
+        'struggle_score': 1,
+        'added_date': current_timestamp,
+        'next_pending_date': None,
+    },
+    {
+        'task': 'Exercise for 20 minutes',
+        'periodicity': 'daily',
+        'deadline_hour': 15,
+        'current_streak': 0,
+        'status': 'pending',
+        'highest_streak': 1,
+        'struggle_score': 1,
+        'added_date': current_timestamp,
+        'next_pending_date': None,
+    },
+    {
+        'task': 'Write a journal entry',
+        'periodicity': 'weekly',
+        'deadline_hour': 6,
+        'current_streak': 0,
+        'status': 'pending',
+        'highest_streak': 1,
+        'struggle_score': 1,
+        'added_date': current_timestamp,
+        'next_pending_date': None,
+    },
+    {
+        'task': 'Meditate for 10 minutes',
+        'periodicity': 'daily',
+        'deadline_hour': 21,
+        'current_streak': 0,
+        'status': 'pending',
+        'highest_streak': 1,
+        'struggle_score': 1,
+        'added_date': current_timestamp,
+        'next_pending_date': None,
+    },
+]
 
 class User(db.Model, UserMixin):
     """
@@ -67,6 +124,23 @@ class User(db.Model, UserMixin):
         Return a string representation of the User instance.
         """
         return f"<User {self.username}>"
+    @classmethod
+    def create_default_predefined_habits(cls, user):
+        """
+    Create and add default predefined habits to a user.
+
+    Args:
+    - user (User): The user for whom to create default predefined habits.
+
+    Note:
+    This method creates a set of predefined habits and associates them with the provided user.
+    The predefined habit data is sourced from the `predefined_habits_data` list.
+         """
+        for habit_data in predefined_habits_data:
+            habit = Habit(user=user, **habit_data)
+            db.session.add(habit)
+
+        db.session.commit()
 
 class Habit(db.Model):
     """
@@ -133,7 +207,7 @@ def update_habit_statuses():
     with app.app_context():  # Push the application context for database operations
         for habit in Habit.query.all():
 
-            if habit.next_pending_date <= now:
+            if habit.next_pending_date is not None and habit.next_pending_date <= now:
                 if habit.status == "checked":
                     print(f"Habit {habit.task} status changed to pending.")
                     habit.status = "pending"
@@ -396,6 +470,7 @@ def register():
         new_user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(new_user)
         db.session.commit()
+        User.create_default_predefined_habits(new_user)
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
